@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bin data extractor</title>
+	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	<script type="text/javascript"><!--
+
+var strings;
+function extractStrings(){
+	var temp=document.getElementById('bank').value.split(',');
+	var bank=parseInt(temp[0], 16);
+	Logger.reset();
+	for(offset in strings){
+		Logger.log(bank+'\t'+strings[offset].index+'\t0x'+Logger.wordToHex(Math.floor(offset))+'\t'+strings[offset].string);
+	}
+}
+
+
+function parseBank(){
+	var label=document.getElementById('bank').children[document.getElementById('bank').selectedIndex].innerHTML;
+	var temp=document.getElementById('bank').value.split(',');
+	var bank=parseInt(temp[0], 16);
+	var offset=parseInt(temp[1], 16);
+	var nPointers=parseInt(temp[2]);
+	
+	
+	Logger.start();
+	Logger.log('SECTION "'+label+' pointers", ROMX[$'+Logger.wordToHex(offset)+'],BANK[$'+Logger.byteToHex(bank)+']');
+	
+	var pointers=[];
+	for(var i=0; i<nPointers; i++){
+		var mapStart=RomData.getU16(bank, offset);
+		offset+=2;
+		var pointer=RomData.getU16(bank, offset);
+		offset+=2;
+
+		Logger.log('DW $'+Logger.wordToHex(mapStart)+', _DIALOGUE_'+i);
+		pointers.push(pointer);
+	}
+	
+	Logger.log('');
+
+	Logger.log('SECTION "'+label+' - Texts", ROMX[$'+Logger.wordToHex(pointers[0])+'],BANK[$'+Logger.byteToHex(bank)+']');
+	
+	strings={};
+
+	for(var i=0; i<pointers.length; i++){
+		offset=pointers[i];
+		
+		//Logger.log('SECTION "'+label+' - Text '+i+'", ROMX[$'+Logger.wordToHex(offset)+'],BANK[$'+Logger.byteToHex(bank)+']');
+		Logger.log('_DIALOGUE_'+i+': ;originally $'+Logger.wordToHex(offset));
+		
+		
+		var width=RomData.getU8(bank, offset);
+		offset++;
+		var height=RomData.getU8(bank, offset);
+		offset++;
+		
+		Logger.log('\tSTART_BOX_BASIC $'+Logger.byteToHex(width)+',$'+Logger.byteToHex(height));
+		
+		var zeroesFound=0;
+		while(zeroesFound<2){
+			var byte=RomData.getU8(bank,offset);
+			offset++;
+			
+			
+			if(byte===0x00){
+				zeroesFound++;
+				Logger.log('\tEND_BOX');
+			}else if(byte & 0x80){
+				//copy
+				var len=(byte & 0x7f)+1;
+				var string='';
+				var foundChars=0;
+				var chars=[];
+				for(var j=0; j<len; j++){
+					var chr=RomData.getU8(bank,offset);
+					offset++;
+					
+					var myTable;
+					if(i>=41 && i<=89)
+						myTable=TABLE_LOWER;
+					else
+						myTable=TABLE_UPPER;
+
+					if(typeof myTable[chr]!=='undefined'){
+						string+=myTable[chr];
+						foundChars++;
+					}else
+						string+='<'+Logger.byteToHex(chr)+'>';
+
+					chars.push(chr);
+				}
+				
+				if(zeroesFound===0 && chars.length===1)
+					Logger.log('\tTILE_ATTR 1, $'+Logger.byteToHex(chars[0]));
+				else
+					Logger.logBytesSamuraiString(bank, offset-chars.length-1, zeroesFound==1 && foundChars? string:null);
+				
+				if(zeroesFound===1){
+					if(!strings[pointers[i]])
+						strings[pointers[i]]={index:i, string:''};
+					strings[pointers[i]].string+=string+' ';
+				}
+				//Logger.log('\tWRITE_STRING "'+string+'"');
+			}else{
+				//fill
+				var nBytes=byte+1;
+				var byteToFill=RomData.getU8(bank,offset);
+				offset++;
+				if(zeroesFound===1 && byteToFill===0x01)
+					Logger.log('\tEMPTY_SPACES '+nBytes);
+				else if(zeroesFound===0)
+					Logger.log('\tTILE_ATTR '+nBytes+', $'+Logger.byteToHex(byteToFill));
+				else
+					Logger.log('\tFILL_N '+nBytes+', $'+Logger.byteToHex(byteToFill));
+			}
+		}
+	}
+}
+
+	--></script>
+	<script type="text/javascript" src="table_lower.js"></script>
+	<script type="text/javascript" src="table_upper.js"></script>
+	<script type="text/javascript" src="gb_parser.js"></script>
+</head>
+<body>
+	<label>Bank <select id="bank">
+		<option value="13,4000,100">Bank 19 - In-game dialogue</option>
+	</select></label>
+<hr/>
+</body></html>

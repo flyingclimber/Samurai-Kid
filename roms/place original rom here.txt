@@ -1,0 +1,4 @@
+place original "Samurai Kid (Japan).gbc" rom as "samurai_kid_jp.gbc"
+CRC32: 44a9ddfb
+MD5:   7ee095116f1733dc6ba2b2de3f28f5ef
+SHA1:  42834c6a1ea9a0e1d73bb01ac83a4bc504c86c4e

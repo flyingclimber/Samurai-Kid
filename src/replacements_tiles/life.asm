@@ -1,0 +1,2 @@
+DB $FF,$FF,$FF,$BA,$FF,$BA,$FF,$BA,$FF,$BA,$FF,$8A,$FF,$FF,$FF,$FF
+DB $FF,$FF,$FF,$11,$FF,$F7,$FF,$31,$FF,$F7,$FF,$F1,$FF,$FF,$FF,$FF
