@@ -114,6 +114,8 @@ SECTION "Bank 43 - Pause - Best/current time", ROMX[$4ee0],BANK[$2b]	;real offse
 INCLUDE "./replacements_tiles/pause_time.asm"
 SECTION "Bank 43 - Pause - Rank", ROMX[$5310],BANK[$2b]	;real offset=$0ad310
 INCLUDE "./replacements_tiles/pause_rank.asm"
+SECTION "Bank 33 - Pause - Item descriptions", ROMX[$4b70],BANK[$21]	;real offset=$084b70
+INCLUDE "./replacements_tiles/pause_item_descriptions.asm"
 
 
 SECTION "Bank 45 - Stage select - Rank", ROMX[$69b0],BANK[$2d]	;real offset=$0b69b0
@@ -133,7 +135,6 @@ INCLUDE "./replacements_tiles/yasu_hide.asm"
 
 
 ;SECTION "Bank 31 - stage names", ROMX[$6ea0],BANK[$1f]			;real offset=$07eea0
-;SECTION "Bank 33 - item descriptions", ROMX[$4a70],BANK[$21]	;real offset=$084a70
 ;SECTION "Bank 37 - unknown", ROMX[$4050],BANK[$25]				;real offset=$094050
 ;SECTION "Bank 39 - unknown", ROMX[$7910],BANK[$27]				;real offset=$09f910
 ;SECTION "Bank 40 - unknown", ROMX[$6260],BANK[$28]				;real offset=$0a2260
