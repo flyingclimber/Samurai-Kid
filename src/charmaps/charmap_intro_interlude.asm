@@ -1,5 +1,5 @@
 ;intro + in-game dialogue
-NEWCHARMAP upper
+NEWCHARMAP intro_interlude
 CHARMAP "<00>", $00
 CHARMAP "<01>", $01
 CHARMAP "<02>", $02

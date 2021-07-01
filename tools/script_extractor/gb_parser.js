@@ -49,7 +49,7 @@ var Logger=(function(){
 		logBytesSamuraiString:function(bank, offset, comment){
 			var len=(RomData.getU8(bank, offset) & 0x7f) +1;
 			offset++;
-			var str='\tDB %10000000 - 1 + '+len+', ';
+			var str='\tCOPY_LEN '+len+'\n\tDB ';
 			for(var i=0; i<len; i++){
 				if(i)
 					str+=', ';

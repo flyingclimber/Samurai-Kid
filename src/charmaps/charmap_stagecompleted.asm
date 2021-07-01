@@ -1,4 +1,4 @@
-NEWCHARMAP lower
+NEWCHARMAP stagecompleted
 CHARMAP " ", $90 - $70
 CHARMAP "!", $91 - $70
 CHARMAP "\"", $92 - $70

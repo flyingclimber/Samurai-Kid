@@ -7,10 +7,11 @@ _RAM_CURRENT_STAGE_TIME EQU $c47c ;maximum value for hundredths (3rd byte): $3b 
 ; IMPORTS
 INCLUDE "./hardware.inc" ;https://github.com/gbdev/hardware.inc/blob/master/hardware.inc
 INCLUDE "./macros.asm"
-INCLUDE "./charmap_upper.asm"
-INCLUDE "./charmap_lower.asm"
-;INCLUDE "./charmap_ending.asm"
-INCLUDE "./charmap_credits.asm"
+INCLUDE "./charmaps/charmap_intro_interlude.asm"
+INCLUDE "./charmaps/charmap_stagecompleted.asm"
+INCLUDE "./charmaps/charmap_savemenu.asm"
+INCLUDE "./charmaps/charmap_ending.asm"
+INCLUDE "./charmaps/charmap_credits.asm"
 
 
 SECTION "Get rectangle pointer", ROM0[$0cfe]
@@ -46,28 +47,52 @@ parse_data_rectangle:
 
 
 
+SECTION "Restore interlude box", ROM0[$138a]
+;this restores the original background behind the interlude box, it also restores a few tiles at its sides
+;which means we can make the interlude box wider
+;however, stages 6 and 10A have an initial offset different from the rest (since player enters from another position)
+;and it fails with them, so we will keep the original smaller box in those cases
+call $13a2
+
+
+;INTERLUDE - ARROW FIX (shift it 16 pixels to the right)
+SECTION "Bank 16 - Arrow metasprite X", ROMX[$7522],BANK[$10]
+DB LOW($fc+16)
+;INTERLUDE STAGE 2 - BOWL EXPLANATION FIX (shift it 16 pixels to the left)
+SECTION "Bank 16 - Bowl metasprite 1 X", ROMX[$75aa],BANK[$10]
+DB LOW($f8-16)
+SECTION "Bank 16 - Bowl metasprite 2 X", ROMX[$75aa+4],BANK[$10]
+DB LOW($00-16)
+;INTERLUDE STAGE 5 - DEMON STONE EXPLANATION FIX (shift it 16 pixels to the right)
+SECTION "Bank 16 - Demon stone metasprite 1 X", ROMX[$75b3],BANK[$10]
+DB LOW($f8+48)
+SECTION "Bank 16 - Demon stone metasprite 2 X", ROMX[$75b3+4],BANK[$10]
+DB $00+48
+;INTERLUDE STAGE 7 - LASER DEFLECTOR EXPLANATION FIX (shift it 16 pixels to the right)
+SECTION "Bank 16 - Laser metasprite 1 X", ROMX[$7594],BANK[$10]
+DB LOW($f8+104)
+SECTION "Bank 16 - Laser metasprite 2 X", ROMX[$7594+4],BANK[$10]
+DB $00+104
+;INTERLUDE STAGE 8 - ATTACHING BOMB EXPLANATION FIX (shift it 16 pixels to the right)
+SECTION "Bank 16 - Bomb metasprite 1 X", ROMX[$758b],BANK[$10]
+DB LOW($f8+48)
+SECTION "Bank 16 - Bomb metasprite 2 X", ROMX[$758b+4],BANK[$10]
+DB $00+48
 
 
 
-
-
-; PAUSE TEXT REPLACEMENT
-SECTION "Bank 18 - pause texts", ROMX[$4ccd],BANK[$12]				;real offset=$048ccd
-DB $80, $82, $84, $8e, $9a, $86, $88, $8a, $88, $8c, $9a, $9a, $90, $92, $94, $8c, $9a
-SECTION "Bank 18 - pause texts (boss)", ROMX[$4Cf0],BANK[$12]		;real offset=$48cf0
-DB $80, $82, $84, $8e, $01, $81, $83, $85, $83, $87, $01, $01, $8b, $8d, $8f, $87, $01
 
 ; TILESET REPLACEMENTS
 SECTION "Bank 46 - Main menu 1", ROMX[$4db0],BANK[$2e]			;real offset=$0b8db0
-INCLUDE "./replacements_tiles/title1.asm"
+INCLUDE "./replacements_tiles/main_menu_1.asm"
 SECTION "Bank 46 - Main menu 2", ROMX[$4db0+4*16],BANK[$2e]
-INCLUDE "./replacements_tiles/title2.asm"
+INCLUDE "./replacements_tiles/main_menu_2.asm"
 SECTION "Bank 46 - Main menu 3", ROMX[$4db0+20*16],BANK[$2e]
-INCLUDE "./replacements_tiles/title3.asm"
+INCLUDE "./replacements_tiles/main_menu_3.asm"
 SECTION "Bank 46 - Main menu 4", ROMX[$4db0+16*16],BANK[$2e]
-INCLUDE "./replacements_tiles/title4.asm"
+INCLUDE "./replacements_tiles/main_menu_4.asm"
 SECTION "Bank 46 - Main menu 5", ROMX[$4db0+36*16],BANK[$2e]
-INCLUDE "./replacements_tiles/title5.asm"
+INCLUDE "./replacements_tiles/main_menu_5.asm"
 
 SECTION "Bank 46 - Main menu Selected 1", ROMX[$5340],BANK[$2e]			;real offset=$b9340
 INCLUDE "./replacements_tiles/main_menu_selected1.asm"
@@ -116,19 +141,28 @@ INCLUDE "./replacements_tiles/yasu_hide.asm"
 ;SECTION "Bank 55 - boss sign?", ROMX[$7940],BANK[$37]			;real offset=$0df940
 
 ; TILESET REPLACEMENTS - FONTS
+SECTION "Bank 36 - Credits", ROMX[$6a30],BANK[$24]
+;add blank tile to make it easier to build credits text boxes
+REPT 16
+	DB $ff
+ENDR
+SECTION "Bank 37 - Ending", ROMX[$4050],BANK[$25]
+INCLUDE "./replacements_tiles/font.asm"
 SECTION "Bank 38 - Stage end font", ROMX[$4fd0],BANK[$26]
 INCLUDE "./replacements_tiles/font.asm"
 SECTION "Bank 39 - Intro font", ROMX[$56d0],BANK[$27]
 INCLUDE "./replacements_tiles/font.asm"
 SECTION "Bank 40 - In-game dialogue font", ROMX[$51c0],BANK[$28]
 INCLUDE "./replacements_tiles/font.asm"
+SECTION "Bank 40 - Savegame menu 1", ROMX[$6660],BANK[$28]
+INCLUDE "./replacements_tiles/font_savemenu1.asm"
+SECTION "Bank 40 - Savegame menu 2", ROMX[$6760],BANK[$28]
+INCLUDE "./replacements_tiles/font_savemenu2.asm"
 
 
 
 
 
 ; STRING REPLACEMENTS
-INCLUDE "./replacements_strings/intro.asm"
-INCLUDE "./replacements_strings/ingame_dialogue.asm"
-;INCLUDE "./replacements_strings/ending.asm"
-;INCLUDE "./replacements_strings/credits.asm"
+INCLUDE "./replacements_strings/bank18.asm"
+INCLUDE "./replacements_strings/bank19.asm"
