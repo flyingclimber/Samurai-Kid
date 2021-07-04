@@ -1,0 +1,3 @@
+DB $FF,$00,$FF,$00,$DF,$1E,$F1,$3E,$FF,$30,$F7,$3E,$F7,$36,$FF,$36
+DB $FF,$00,$FF,$00,$7D,$71,$DF,$FB,$FF,$DB,$FF,$DB,$FF,$DB,$FF,$DB
+DB $FF,$00,$FF,$00,$DF,$CC,$7F,$EC,$FF,$6C,$FF,$6C,$FF,$EC,$7F,$EC

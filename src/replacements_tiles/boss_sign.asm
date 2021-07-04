@@ -1,0 +1,8 @@
+DB $7F,$FF,$CF,$E0,$BF,$DF,$BE,$B8,$EF,$BB,$EF,$BB,$EF,$BB,$EE,$B8
+DB $FF,$FF,$F4,$00,$FF,$FF,$9A,$F3,$7D,$6D,$FF,$6D,$FF,$6D,$FF,$ED
+DB $FF,$FF,$00,$00,$FF,$FF,$75,$C7,$FF,$BE,$FB,$BE,$E3,$BE,$F3,$BE
+DB $FE,$FF,$03,$07,$F9,$FB,$DD,$1D,$F5,$FD,$E5,$FD,$85,$FD,$C5,$FD
+DB $EF,$BB,$AF,$BB,$EF,$BB,$AF,$BB,$AF,$BB,$AE,$B8,$9F,$DF,$C0,$E0
+DB $FF,$6D,$FF,$6D,$FF,$6D,$FF,$6D,$6F,$6D,$D7,$F3,$FF,$FF,$00,$00
+DB $79,$CF,$7D,$F7,$3C,$F7,$1C,$F7,$7D,$F7,$BE,$8E,$FF,$FF,$00,$00
+DB $E5,$3D,$F5,$DD,$F5,$DD,$75,$DD,$F5,$DD,$FD,$3D,$F9,$FB,$03,$07

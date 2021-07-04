@@ -105,9 +105,6 @@ INCLUDE "./replacements_tiles/new_load_game1.asm"
 SECTION "Bank 40 - New/load game 2", ROMX[$6260+16*16*3],BANK[$28]	;real offset=$a2260
 INCLUDE "./replacements_tiles/new_load_game2.asm"
 
-
-
-
 SECTION "Bank 30 - Pause", ROMX[$5e90],BANK[$1e]				;real offset=$079e90
 INCLUDE "./replacements_tiles/pause.asm"
 SECTION "Bank 43 - Pause - Best/current time", ROMX[$4ee0],BANK[$2b]	;real offset=$0acee0
@@ -117,29 +114,36 @@ INCLUDE "./replacements_tiles/pause_rank.asm"
 SECTION "Bank 33 - Pause - Item descriptions", ROMX[$4b70],BANK[$21]	;real offset=$084b70
 INCLUDE "./replacements_tiles/pause_item_descriptions.asm"
 
-
+SECTION "Bank 31 - Stage names 1-9", ROMX[$7020],BANK[$1f]			;real offset=$07f020
+INCLUDE "./replacements_tiles/stage_titles1.asm"
+SECTION "Bank 32 - Stage names 10, dojos and travel", ROMX[$40b0],BANK[$20]			;real offset=$0800b0
+INCLUDE "./replacements_tiles/stage_titles2.asm"
 SECTION "Bank 45 - Stage select - Rank", ROMX[$69b0],BANK[$2d]	;real offset=$0b69b0
 INCLUDE "./replacements_tiles/stage_select_rank.asm"
+SECTION "Bank 45 - Stage select - Time (Hold B)", ROMX[$69b0+39*16],BANK[$2d]
+INCLUDE "./replacements_tiles/stage_select_time.asm"
 
 SECTION "Bank 38 - Stage completed - Best/current rank", ROMX[$5980],BANK[$26]	;real offset=$099980
 INCLUDE "./replacements_tiles/stage_end_rank.asm"
-SECTION "Bank 38 - Stage completed - ", ROMX[$68e0],BANK[$26]	;real offset=$09a8e0
+SECTION "Bank 38 - Stage completed - Time", ROMX[$68e0],BANK[$26]	;real offset=$09a8e0
 INCLUDE "./replacements_tiles/stage_end_time.asm"
-
-
+SECTION "Bank 38 - Stage completed - Beat time/rank", ROMX[$6c00],BANK[$26]	;real offset=$09ac00
+INCLUDE "./replacements_tiles/stage_end_beat.asm"
+SECTION "Bank 38 - Stage completed - Dojo goal (Top)", ROMX[$5b90],BANK[$26]	;real offset=$099b90
+INCLUDE "./replacements_tiles/stage_end_dojo_goal1.asm"
+SECTION "Bank 38 - Stage completed - Dojo goal (Bottom)", ROMX[$5b90+16*14],BANK[$26]
+INCLUDE "./replacements_tiles/stage_end_dojo_goal2.asm"
 
 SECTION "Bank 46 - HUD life", ROMX[$71c0],BANK[$2e]				;real offset=$0bb1c0
 INCLUDE "./replacements_tiles/life.asm"
 SECTION "Bank 40 - Yasu/Hide interlude", ROMX[$5a20],BANK[$28]	;real offset=$0a1a20
 INCLUDE "./replacements_tiles/yasu_hide.asm"
 
+SECTION "Bank 46 - Boss sign", ROMX[$7420],BANK[$2e]			;real offset=$0bb420
+INCLUDE "./replacements_tiles/boss_sign.asm"
 
-;SECTION "Bank 31 - stage names", ROMX[$6ea0],BANK[$1f]			;real offset=$07eea0
-;SECTION "Bank 37 - unknown", ROMX[$4050],BANK[$25]				;real offset=$094050
-;SECTION "Bank 39 - unknown", ROMX[$7910],BANK[$27]				;real offset=$09f910
-;SECTION "Bank 40 - unknown", ROMX[$6260],BANK[$28]				;real offset=$0a2260
-;SECTION "Bank 45 - unknown", ROMX[$6860],BANK[$2d]				;real offset=$0b6860
-;SECTION "Bank 55 - boss sign?", ROMX[$7940],BANK[$37]			;real offset=$0df940
+
+
 
 ; TILESET REPLACEMENTS - FONTS
 SECTION "Bank 36 - Credits", ROMX[$6a30],BANK[$24]
@@ -148,7 +152,7 @@ REPT 16
 	DB $ff
 ENDR
 SECTION "Bank 37 - Ending", ROMX[$4050],BANK[$25]
-INCLUDE "./replacements_tiles/font.asm"
+INCLUDE "./replacements_tiles/font_ending.asm"
 SECTION "Bank 38 - Stage end font", ROMX[$4fd0],BANK[$26]
 INCLUDE "./replacements_tiles/font.asm"
 SECTION "Bank 39 - Intro font", ROMX[$56d0],BANK[$27]

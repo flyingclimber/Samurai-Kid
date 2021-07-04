@@ -102,8 +102,8 @@ DW $9cc0, _BANK18_86
 DW $9d40, _BANK18_87
 DW $9dc0, _BANK18_88
 DW $9800, _BANK18_89
-DW $9800, _BANK18_90
-DW $9925, _BANK18_91
+DW $9800, _TITLE_SCREEN
+DW $9925, _MAIN_MENU
 DW $9800, _BANK18_92
 DW $9821, _BANK18_93
 DW $9821, _BANK18_94
@@ -2778,7 +2778,13 @@ _BANK18_89: ;originally $682c
 	FILL_N 128, $02
 	FILL_N 94, $02
 	END_BOX
-_BANK18_90: ;originally $68ad
+
+
+
+
+
+
+_TITLE_SCREEN: ;originally $68ad
 	START_BOX_BASIC $14,$12
 	TILE_ATTR 128, $00
 	TILE_ATTR 32, $00
@@ -2839,7 +2845,7 @@ _BANK18_90: ;originally $68ad
 	DB $08, $09, $0a, $0b, $0c, $0d, $0e, $0f
 	FILL_N 26, $02
 	END_BOX
-_BANK18_91: ;originally $69e6
+_MAIN_MENU: ;originally $69e6
 	START_BOX_BASIC $0a,$04
 	TILE_ATTR 3, $0c
 	TILE_ATTR 4, $05
@@ -2856,6 +2862,13 @@ _BANK18_91: ;originally $69e6
 	COPY_LEN 28
 	DB $da, $db, $dc, $dd, $de, $df, $fc, $fd, $6c, $6c, $ea, $eb, $ec, $ed, $ee, $ef, $fe, $ff, $fc, $fd, $fa, $e6, $e7, $e8, $e9, $fb, $06, $07
 	END_BOX
+
+
+
+
+
+
+
 _BANK18_92: ;originally $6a1d
 	START_BOX_BASIC $14,$12
 	TILE_ATTR 21, $07
