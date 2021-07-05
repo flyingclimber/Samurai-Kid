@@ -143,29 +143,29 @@ DW $9d00, _BANK18_115
 
 
 
-DW $9ce0, _CREDITS_01
-DW $9ce0, _CREDITS_02
-DW $9ce0, _CREDITS_03
-DW $9ce0, _CREDITS_04
-DW $9ce0, _CREDITS_05
-DW $9ce0, _CREDITS_06
-DW $9ce0, _CREDITS_07
-DW $9ce0, _CREDITS_08
-DW $9ce0, _CREDITS_09
-DW $9ce0, _CREDITS_10
-DW $9ce0, _CREDITS_11
-DW $9ce0, _CREDITS_12
-DW $9ce0, _CREDITS_13
-DW $9ce0, _CREDITS_14
-DW $9ce0, _CREDITS_15
-DW $9ce0, _CREDITS_16
-DW $9ce0, _CREDITS_17
-DW $9ce0, _CREDITS_18
-DW $9ce0, _CREDITS_19_UNUSED
-DW $9ce0, _CREDITS_20
-DW $9ce0, _CREDITS_21
-DW $9ce0, _CREDITS_22
-DW $9ce0, _CREDITS_23
+DW $9ce0, _CREDITS_01 ;116 (01)
+DW $9ce0, _CREDITS_02 ;117 (02)
+DW $9ce0, _CREDITS_03 ;118 (03)
+DW $9ce0, _CREDITS_04 ;119 (04)
+DW $9ce0, _CREDITS_05 ;120 (05)
+DW $9ce0, _CREDITS_06 ;121 (06)
+DW $9ce0, _CREDITS_07 ;122 (07)
+DW $9ce0, _CREDITS_08 ;123 (08)
+DW $9ce0, _CREDITS_09 ;124 (09)
+DW $9ce0, _CREDITS_10 ;125 (10)
+DW $9ce0, _CREDITS_11 ;126 (11)
+DW $9ce0, _CREDITS_12 ;127 (12)
+DW $9ce0, _CREDITS_13 ;128 (13)
+DW $9ce0, _CREDITS_14 ;129 (16)
+DW $9ce0, _CREDITS_15 ;130 (17)
+DW $9ce0, _CREDITS_16 ;131 (18)
+DW $9ce0, _CREDITS_17 ;132 (19)
+DW $9ce0, _CREDITS_18 ;133 (20)
+DW $9ce0, _CREDITS_19_UNUSED ;134
+DW $9ce0, _CREDITS_20 ;135 (21)
+DW $9ce0, _CREDITS_21 ;136 (22)
+DW $9ce0, _CREDITS_22 ;137 (14)
+DW $9ce0, _CREDITS_23 ;138 (15)
 
 DW $9800, _BANK18_139
 DW $9800, _BANK18_140
@@ -2813,15 +2813,15 @@ _TITLE_SCREEN: ;originally $68ad
 	FILL_N 31, $02
 	COPY_LEN 2
 	DB $d3, $d4
-	FILL_N 9, $02
-	COPY_LEN 57
-	DB $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $d5, $02, $02, $d2, $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $9b, $9c, $9d, $9e, $9f, $e5, $02, $02, $e2, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $e4
-	FILL_N 3, $02
-	COPY_LEN 16
+	FILL_N 8, $02
+	COPY_LEN 58+2+16+2
+	DB $c0, $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $c4, $02, $02, $c1, $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $9b, $9c, $9d, $9e, $9f, $c5, $02, $02, $c2, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $c6
+	DB $02, $02, $c3
 	DB $b0, $b1, $b2, $b3, $b4, $b5, $b6, $b7, $b8, $b9, $ba, $bb, $bc, $bd, $be, $bf
-	FILL_N 4, $02
-	COPY_LEN 16
-	DB $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf
+	DB $c7
+	FILL_N 1+12, $02
+	COPY_LEN 6
+	DB $ca, $cb, $cc, $cd, $ce, $cf
 	FILL_N 14, $02
 	COPY_LEN 2
 	DB $d0, $d1

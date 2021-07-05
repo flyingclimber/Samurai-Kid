@@ -83,6 +83,8 @@ DB $00+48
 
 
 ; TILESET REPLACEMENTS
+SECTION "Bank 46 - Logo", ROMX[$4850],BANK[$2e];real offset=$0b8850
+INCLUDE "./replacements_tiles/logo.asm"
 SECTION "Bank 46 - Main menu 1", ROMX[$4db0],BANK[$2e]			;real offset=$0b8db0
 INCLUDE "./replacements_tiles/main_menu_1.asm"
 SECTION "Bank 46 - Main menu 2", ROMX[$4db0+4*16],BANK[$2e]
@@ -100,6 +102,7 @@ SECTION "Bank 46 - Main menu Selected 2", ROMX[$5440],BANK[$2e]			;real offset=$
 INCLUDE "./replacements_tiles/main_menu_selected2.asm"
 SECTION "Bank 46 - Main menu Selected 3", ROMX[$5560],BANK[$2e]			;real offset=$b9560
 INCLUDE "./replacements_tiles/main_menu_selected3.asm"
+
 SECTION "Bank 40 - New/load game", ROMX[$6260],BANK[$28]				;real offset=$a2260
 INCLUDE "./replacements_tiles/new_load_game1.asm"
 SECTION "Bank 40 - New/load game 2", ROMX[$6260+16*16*3],BANK[$28]	;real offset=$a2260
