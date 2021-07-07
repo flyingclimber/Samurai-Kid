@@ -168,7 +168,7 @@ DW $9ce0, _CREDITS_22 ;137 (14)
 DW $9ce0, _CREDITS_23 ;138 (15)
 
 DW $9800, _BANK18_139
-DW $9800, _BANK18_140
+DW $9800, _ENDING_PERFECT_CLEAR
 DW $9d81, _BANK18_141
 DW $9d81, _BANK18_142
 DW $9d81, _BANK18_143
@@ -2812,7 +2812,7 @@ _TITLE_SCREEN: ;originally $68ad
 	END_BOX
 	FILL_N 31, $02
 	COPY_LEN 2
-	DB $d3, $d4
+	DB $c8, $d4
 	FILL_N 8, $02
 	COPY_LEN 58+2+16+2
 	DB $c0, $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $c4, $02, $02, $c1, $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $9b, $9c, $9d, $9e, $9f, $c5, $02, $02, $c2, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $c6
@@ -4036,9 +4036,22 @@ _BANK18_139: ;originally $7ab2
 	COPY_LEN 18
 	DB $70, $71, $72, $73, $74, $75, $76, $77, $78, $79, $7a, $7b, $7c, $7d, $7e, $7f, $00, $00
 	END_BOX
-_BANK18_140: ;originally $7c41
+_ENDING_PERFECT_CLEAR: ;originally $7c41
 	START_BOX_BASIC $14,$12
-	TILE_ATTR 80, $00
+	;PERFECT CLEAR
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 2, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 2, %00001000
+	;artwork
 	TILE_ATTR 6, $09
 	TILE_ATTR 8, $0e
 	TILE_ATTR 8, $09
@@ -4076,21 +4089,42 @@ _BANK18_140: ;originally $7c41
 	DB $0c, $0e, $0e, $0d, $0e
 	TILE_ATTR 3, $0d
 	TILE_ATTR 5, $0f
-	TILE_ATTR 15, $00
-	TILE_ATTR 5, $08
-	TILE_ATTR 15, $00
-	TILE_ATTR 5, $08
-	TILE_ATTR 15, $00
-	TILE_ATTR 5, $08
-	TILE_ATTR 15, $00
-	TILE_ATTR 5, $08
+	;CONGRATULATIONS
+	TILE_ATTR 16, $00
+	TILE_ATTR 4, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 4, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 4, %00001000
+	TILE_ATTR 16, $00
+	TILE_ATTR 4, %00001000
 	END_BOX
 	COPY_LEN 128
-	DB $e3, $80, $82, $84, $86, $88, $8a, $8c, $8e, $90, $92, $94, $96, $98, $9a, $9c, $9e, $c0, $c2, $e3, $e3, $81, $83, $85, $87, $89, $8b, $8d, $8f, $91, $93, $95, $97, $99, $9b, $9d, $9f, $c1, $c3, $e3, $e3, $a0, $a2, $a4, $a6, $a8, $aa, $ac, $ae, $b0, $b2, $b4, $b6, $b8, $ba, $bc, $be, $e0, $e2, $e3, $e3, $a1, $a3, $a5, $a7, $a9, $ab, $ad, $af, $b1, $b3, $b5, $b7, $b9, $bb, $bd, $bf, $e1, $e3, $e3, $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $20, $21, $22, $23, $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $9b, $9c, $9d, $9e, $9f, $30, $31, $32, $33, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7
+	;PERFECT CLEAR
+	DB $15, $15, $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $15, $15
+	DB $15, $15, $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $9b, $9c, $9d, $9e, $9f, $15, $15
+	DB $15, $4c, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $15, $15
+	DB $15, $15, $b0, $b1, $b2, $b3, $b4, $b5, $b6, $b7, $b8, $b9, $ba, $bb, $bc, $bd, $be, $bf, $15, $15
+	;artwork
+	DB $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $20, $21, $22, $23
+	DB $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $9b, $9c, $9d, $9e, $9f, $30, $31, $32, $33
+	DB $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7
 	COPY_LEN 128
-	DB $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $24, $25, $26, $27, $b0, $b1, $b2, $b3, $b4, $b5, $b6, $b7, $b8, $b9, $ba, $bb, $bc, $bd, $be, $bf, $34, $35, $36, $37, $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf, $28, $29, $2a, $2b, $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $da, $db, $dc, $dd, $de, $df, $38, $39, $3a, $3b, $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea, $eb, $ec, $ed, $ee, $ef, $2c, $2d, $2e, $2f, $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $fa, $fb, $fc, $fd, $fe, $ff, $3c, $3d, $3e, $3f, $00, $01, $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f
+	DB $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $24, $25, $26, $27
+	DB $b0, $b1, $b2, $b3, $b4, $b5, $b6, $b7, $b8, $b9, $ba, $bb, $bc, $bd, $be, $bf, $34, $35, $36, $37
+	DB $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf, $28, $29, $2a, $2b
+	DB $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $da, $db, $dc, $dd, $de, $df, $38, $39, $3a, $3b
+	DB $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea, $eb, $ec, $ed, $ee, $ef, $2c, $2d, $2e, $2f
+	DB $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $fa, $fb, $fc, $fd, $fe, $ff, $3c, $3d, $3e, $3f
+	DB $00, $01, $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f
 	COPY_LEN 104
-	DB $40, $41, $42, $43, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $1a, $1b, $1c, $1d, $1e, $1f, $50, $51, $52, $53, $e3, $c4, $c6, $c8, $ca, $cc, $ce, $d0, $d2, $d4, $d6, $d8, $da, $dc, $de, $44, $45, $46, $47, $48, $e3, $c5, $c7, $c9, $cb, $cd, $cf, $d1, $d3, $d5, $d7, $d9, $db, $dd, $df, $54, $55, $56, $57, $58, $e3, $e4, $e6, $e8, $ea, $ec, $ee, $f0, $f2, $f4, $f6, $f8, $fa, $fc, $fe, $49, $4a, $4b, $4c, $4d, $e3, $e5, $e7, $e9, $eb, $ed, $ef, $f1, $f3, $f5, $f7, $f9, $fb, $fd, $ff, $59, $5a, $5b, $5c, $5d
+	DB $40, $41, $42, $43
+	DB $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $1a, $1b, $1c, $1d, $1e, $1f, $50, $51, $52, $53
+	;CONGRATULATIONS
+	DB $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf, $44, $45, $46, $47
+	DB $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $da, $db, $dc, $dd, $de, $df, $56, $57, $58, $59
+	DB $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea, $eb, $ec, $ed, $ee, $ef, $48, $49, $4a, $4b
+	DB $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $fa, $fb, $fc, $fd, $fe, $ff, $5a, $5b, $5c, $5d
 	END_BOX
 _BANK18_141: ;originally $7e10
 	START_BOX_BASIC $08,$02

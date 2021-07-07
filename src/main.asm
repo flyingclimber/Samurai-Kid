@@ -55,6 +55,11 @@ SECTION "Restore interlude box", ROM0[$138a]
 call $13a2
 
 
+;LOGO ATTRIBUTES FIX (change katana shadow to blue)
+SECTION "Bank 16 - Logo katana sword 1 attribute", ROMX[$61a1],BANK[$10]
+DB $01
+SECTION "Bank 16 - Logo katana sword 2 attribute", ROMX[$61a9],BANK[$10]
+DB $01
 ;INTERLUDE - ARROW FIX (shift it 16 pixels to the right)
 SECTION "Bank 16 - Arrow metasprite X", ROMX[$7522],BANK[$10]
 DB LOW($fc+16)
@@ -112,6 +117,8 @@ SECTION "Bank 30 - Pause", ROMX[$5e90],BANK[$1e]				;real offset=$079e90
 INCLUDE "./replacements_tiles/pause.asm"
 SECTION "Bank 43 - Pause - Best/current time", ROMX[$4ee0],BANK[$2b]	;real offset=$0acee0
 INCLUDE "./replacements_tiles/pause_time.asm"
+SECTION "Bank 43 - Pause - Dojo title", ROMX[$4c60],BANK[$2b]	;real offset=$0acc60
+INCLUDE "./replacements_tiles/pause_dojo_title.asm"
 SECTION "Bank 43 - Pause - Rank", ROMX[$5310],BANK[$2b]	;real offset=$0ad310
 INCLUDE "./replacements_tiles/pause_rank.asm"
 SECTION "Bank 33 - Pause - Item descriptions", ROMX[$4b70],BANK[$21]	;real offset=$084b70
@@ -144,6 +151,9 @@ INCLUDE "./replacements_tiles/yasu_hide.asm"
 
 SECTION "Bank 46 - Boss sign", ROMX[$7420],BANK[$2e]			;real offset=$0bb420
 INCLUDE "./replacements_tiles/boss_sign.asm"
+
+SECTION "Bank 35 - Ending (perfect clear)", ROMX[$5c90],BANK[$23]			;real offset=$08dc90
+INCLUDE "./replacements_tiles/ending_perfect_clear.asm"
 
 
 
