@@ -37,3 +37,4 @@ CHARMAP "6", $6c
 CHARMAP "7", $6d
 CHARMAP "8", $6e
 CHARMAP "9", $6f
+CHARMAP ".", $62

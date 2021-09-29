@@ -149,13 +149,20 @@ INCLUDE "./replacements_tiles/life.asm"
 SECTION "Bank 40 - Yasu/Hide interlude", ROMX[$5a20],BANK[$28]	;real offset=$0a1a20
 INCLUDE "./replacements_tiles/yasu_hide.asm"
 
-SECTION "Bank 46 - Boss sign", ROMX[$7420],BANK[$2e]			;real offset=$0bb420
+SECTION "Bank 46 - Boss sign", ROMX[$7420],BANK[$2e]				;real offset=$0bb420
 INCLUDE "./replacements_tiles/boss_sign.asm"
 
-SECTION "Bank 35 - Ending (perfect clear)", ROMX[$5c90],BANK[$23]			;real offset=$08dc90
+SECTION "Bank 35 - Ending (perfect clear)", ROMX[$5c90],BANK[$23]	;real offset=$08dc90
 INCLUDE "./replacements_tiles/ending_perfect_clear.asm"
+SECTION "Bank 36 - Ending (normal)", ROMX[$4060],BANK[$24]			;real offset=$090060
+INCLUDE "./replacements_tiles/ending_normal.asm"
 
 
+
+
+
+SECTION "Bank 40 - CGB only DMG message", ROMX[$40f0],BANK[$28]			;real offset=$a00f0
+INCLUDE "./replacements_tiles/dmg_message.asm"
 
 
 ; TILESET REPLACEMENTS - FONTS

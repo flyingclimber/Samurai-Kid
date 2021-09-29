@@ -48,8 +48,8 @@ DW $98ad-2, _STAGE8_INTERLUDE2
 DW $98a9-2, _STAGE9_INTERLUDE1
 DW $98a9-2, _STAGE9_INTERLUDE2
 
-DW $98b1-2, _STAGE10A_INTERLUDE1
-DW $98b1-2, _STAGE10A_INTERLUDE2
+DW $98b1, _STAGE10A_INTERLUDE1
+DW $98b1, _STAGE10A_INTERLUDE2
 
 DW $98ad-2, _STAGE10B_INTERLUDE1
 DW $98ad-2, _STAGE10B_INTERLUDE2
@@ -385,7 +385,8 @@ _STAGE1_INTERLUDE1: ;originally $42e0
 	START_BOX_BASIC 18, 3
 	TILE_ATTR 18*3, $07
 	END_BOX
-	WRITE_STRING "The switch in the next 2nd room is  out of reach.     " ;２つ先の部屋のスイッチには、ふつうにやっても手がとどかないでヤンス。
+	WRITE_STRING "Two rooms ahead,  there is a switch out of reach." ;２つ先の部屋のスイッチには、ふつうにやっても手がとどかないでヤンス。
+	EMPTY_SPACES 5
 	END_BOX
 _STAGE1_INTERLUDE2: ;originally $430d
 	START_BOX_BASIC 18, 3
@@ -398,7 +399,7 @@ _STAGE2_INTERLUDE1: ;originally $4331
 	START_BOX_BASIC 18, 3
 	TILE_ATTR 18*3, $07
 	END_BOX
-	WRITE_STRING "  Meet the sleepy   bowl little guy   here." ;は、ふだんはイネムリレてるでヤンス。
+	WRITE_STRING "  See this sleepy   bowl little guy   here?" ;は、ふだんはイネムリレてるでヤンス。
 	EMPTY_SPACES 18-4
 	END_BOX
 _STAGE2_INTERLUDE2: ;originally $434e
@@ -533,19 +534,19 @@ _STAGE6_INTERLUDE1: ;originally $44ee
 	END_BOX
 _STAGE6_INTERLUDE2: ;originally $450f
 	START_BOX_BASIC 14, 3
-	TILE_ATTR 13, $07
+	TILE_ATTR 14, $07
 	TILE_ATTR 1, $00
-	TILE_ATTR 14*2, $07
+	TILE_ATTR 13+14, $07
 	END_BOX
-	WRITE_STRING "Press button Ato disappear  and hide!" ;Aボタンを押レているあいだ、すがたを けすことができるでゲス！
+	WRITE_STRING "Press and holdA to disappearand hide!" ;Aボタンを押レているあいだ、すがたを けすことができるでゲス！
 	EMPTY_SPACES 14-9
 	END_BOX
 _STAGE6_INTERLUDE3: ;originally $4539
 	START_BOX_BASIC 14, 3
 	TILE_ATTR 14*3, $07
 	END_BOX
-	WRITE_STRING "Throw it at a demon to crea-te a spring!" ;石妖怪に なげつけると、バネにすることができるでヤンス！
-	EMPTY_SPACES 14-12
+	WRITE_STRING "Throw it at a demon to make a spring!" ;石妖怪に なげつけると、バネにすることができるでヤンス！
+	EMPTY_SPACES 5
 	END_BOX
 
 _STAGE7_INTERLUDE1: ;originally $455e
@@ -590,14 +591,13 @@ _STAGE8_INTERLUDE1: ;originally $45c8
 	EMPTY_SPACES 18-14
 	WRITE_STRING "can be attached"
 	EMPTY_SPACES 18-15
-	WRITE_STRING "to some youkais.  "
+	WRITE_STRING "to some demons.   "
 	END_BOX
 _STAGE8_INTERLUDE2: ;originally $45ed
 	START_BOX_BASIC 18, 3
 	TILE_ATTR 18*3, $07
 	END_BOX
-	WRITE_STRING "Sprouts can also  be attached and   make things hover!" ;この先、石妖怪にくっつけるとすすみやすくなるトコロがあるでゲス！
-	EMPTY_SPACES 18-14
+	WRITE_STRING "You can also      attach sprouts to make things hover!" ;この先、石妖怪にくっつけるとすすみやすくなるトコロがあるでゲス！
 	END_BOX
 
 _STAGE9_INTERLUDE1: ;originally $4616
@@ -621,59 +621,68 @@ _STAGE9_INTERLUDE2: ;originally $4639
 	END_BOX
 
 _STAGE10A_INTERLUDE1: ;originally $465e
-	START_BOX_BASIC $0e,$03
+	START_BOX_BASIC 14,3
 	TILE_ATTR 42, $07
 	END_BOX
-	COPY_LEN 19
-	DB $01, $93, $93, $9c, $ee, $8e, $87, $ad, $a8, $fd, $ff, $63, $92, $01, $01, $94, $96, $98, $bf ; ここが、さいごの妖怪城で  ヤンス！
-	EMPTY_SPACES 23
+	WRITE_STRING "You've done"
+	EMPTY_SPACES 3
+	WRITE_STRING "well to get" ; ここが、さいごの妖怪城で  ヤンス！
+	EMPTY_SPACES 3
+	WRITE_STRING "this far!"
+	EMPTY_SPACES 5
 	END_BOX
 _STAGE10A_INTERLUDE2: ;originally $467a
-	START_BOX_BASIC $0e,$03
+	START_BOX_BASIC 14,3
 	TILE_ATTR 42, $07
 	END_BOX
-	EMPTY_SPACES 14
-	COPY_LEN 14
-	DB $93, $93, $9c, $c1, $96, $db, $cb, $b3, $93, $a3, $92, $9a, $98, $bf ;ここがフンバリどころでゲス！
-	EMPTY_SPACES 14
+	WRITE_STRING "Don't rush" ;ここがフンバリどころでゲス！
+	EMPTY_SPACES 4
+	WRITE_STRING "yourself."
+	EMPTY_SPACES 5+14
 	END_BOX
 
 _STAGE10B_INTERLUDE1: ;originally $4693
-	START_BOX_BASIC $0e,$03
-	TILE_ATTR 42, $07
+	START_BOX_BASIC 18,3
+	TILE_ATTR 18*3, $07
 	END_BOX
-	COPY_LEN 25
-	DB $93, $a8, $63, $8e, $8b, $01, $86, $a0, $99, $81, $ee, $72, $73, $a5, $a0, $a1, $b8, $b3, $99, $83, $92, $94, $96, $98, $bf ;この城さえ おとせば、平和をとりもどせるでヤンス！
-	EMPTY_SPACES 17
+	WRITE_STRING "Take a quick" ;この城さえ おとせば、平和をとりもどせるでヤンス！
+	EMPTY_SPACES 6
+	WRITE_STRING "break before"
+	EMPTY_SPACES 6
+	WRITE_STRING "you keep going."
+	EMPTY_SPACES 3
 	END_BOX
 _STAGE10B_INTERLUDE2: ;originally $46b5
-	START_BOX_BASIC $0e,$03
-	TILE_ATTR 42, $07
+	START_BOX_BASIC 18,3
+	TILE_ATTR 18*3, $07
 	END_BOX
-	EMPTY_SPACES 16
-	COPY_LEN 10
-	DB $72, $73, $aa, $01, $e5, $ea, $92, $9a, $98, $bf ;平和は 目前でゲス！
-	EMPTY_SPACES 16
+	WRITE_STRING "Be careful" ;平和は 目前でゲス！
+	EMPTY_SPACES 8
+	WRITE_STRING "out there!"
+	EMPTY_SPACES 8+18
 	END_BOX
 
 _STAGE10C_INTERLUDE1: ;originally $46ca
-	START_BOX_BASIC $0e,$03
-	TILE_ATTR 42, $07
+	START_BOX_BASIC 18,3
+	TILE_ATTR 18*3, $07
 	END_BOX
-	COPY_LEN 18
-	DB $85, $a0, $ac, $a0, $87, $8d, $92, $01, $e0, $98, $a8, $f0, $f2, $92, $94, $96, $98, $bf ;あとひといきで ボスの部屋でヤンス！
-	EMPTY_SPACES 24
+	WRITE_STRING "The Demon King" ;あとひといきで ボスの部屋でヤンス！
+	EMPTY_SPACES 4
+	WRITE_STRING "is just a few"
+	EMPTY_SPACES 5
+	WRITE_STRING "rooms away."
+	EMPTY_SPACES 7
 	END_BOX
 _STAGE10C_INTERLUDE2: ;originally $46e5
-	START_BOX_BASIC $0e,$03
-	TILE_ATTR 42, $07
+	START_BOX_BASIC 18,3
+	TILE_ATTR 18*3, $07
 	END_BOX
-	COPY_LEN 12
-	DB $01, $86, $89, $8b, $9e, $95, $9f, $83, $92, $9a, $98, $bf ; おうえんレてるでゲス！
-	EMPTY_SPACES 3
-	COPY_LEN 18
-	DB $98, $dd, $e2, $a0, $ba, $bd, $88, $91, $9f, $b0, $95, $87, $01, $01, $92, $9a, $98, $bf ;スパッとやっつけてほレい  でゲス！
-	EMPTY_SPACES 9
+	WRITE_STRING "We're cheering" ; おうえんレてるでゲス！
+	EMPTY_SPACES 4
+	WRITE_STRING "you on," ;スパッとやっつけてほレい  でゲス！
+	EMPTY_SPACES 11
+	WRITE_STRING "Prince Homura!"
+	EMPTY_SPACES 4
 	END_BOX
 	
 
@@ -1044,8 +1053,8 @@ _COLLECTIBLE1A: ;originally $4aba
 	WRITE_2TILES $9a, $9b
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $aa, $ab
-	EMPTY_SPACES 3+16-10
-	WRITE_STRING "the clock!" ;を宝てにいれた！
+	EMPTY_SPACES 3+1
+	WRITE_STRING "an alarm clock!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE2A: ;originally $4af0
 	START_BOX_BASIC 16, 4
@@ -1064,8 +1073,8 @@ _COLLECTIBLE2A: ;originally $4af0
 	WRITE_2TILES $9c, $9d
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $ac, $ad
-	EMPTY_SPACES 3+16-11
-	WRITE_STRING "the amulet!" ;を宝てにいれた！
+	EMPTY_SPACES 3+6
+	WRITE_STRING "an amulet!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE3A: ;originally $4b2c
 	START_BOX_BASIC 16, 4
@@ -1078,8 +1087,8 @@ _COLLECTIBLE3A: ;originally $4b2c
 	WRITE_2TILES $9e, $9f
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $ae, $af
-	EMPTY_SPACES 3+16-13
-	WRITE_STRING "golden acorn!" ;を宝てにいれた！
+	EMPTY_SPACES 3+1
+	WRITE_STRING "a golden acorn!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE4A: ;originally $4b63
 	START_BOX_BASIC 16, 4
@@ -1098,8 +1107,8 @@ _COLLECTIBLE4A: ;originally $4b63
 	WRITE_2TILES $c0, $c1
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $d0, $d1
-	EMPTY_SPACES 3
-	WRITE_STRING "the stuffed toy!" ;を宝てにいれた！
+	EMPTY_SPACES 3+3
+	WRITE_STRING "a teddy bear!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE5A: ;originally $4b9f
 	START_BOX_BASIC 16, 4
@@ -1118,8 +1127,8 @@ _COLLECTIBLE5A: ;originally $4b9f
 	WRITE_2TILES $c2, $c3
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $d2, $d3
-	EMPTY_SPACES 3
-	WRITE_STRING "the pearl shell!" ;を宝てにいれた！
+	EMPTY_SPACES 3+3
+	WRITE_STRING "a clam shell!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE6A: ;originally $4bdb
 	START_BOX_BASIC 16, 4
@@ -1130,10 +1139,11 @@ _COLLECTIBLE6A: ;originally $4bdb
 	FILL_N 3, $10
 	WRITE_STRING "Homura got " ;ホムラ丸は<c4><c5>のろいのたからばこ
 	WRITE_2TILES $c4, $c5
-	EMPTY_SPACES 3+11
+	WRITE_STRING " a"
+	EMPTY_SPACES 1+11
 	WRITE_2TILES $d4, $d5
-	EMPTY_SPACES 3
-	WRITE_STRING "cursed cigarette" ;を宝てにいれた！
+	EMPTY_SPACES 3 + 1
+	WRITE_STRING "treasure chest!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE7A: ;originally $4c12
 	START_BOX_BASIC 16, 4
@@ -1152,8 +1162,8 @@ _COLLECTIBLE7A: ;originally $4c12
 	WRITE_2TILES $c6, $c7
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $d6, $d7
-	EMPTY_SPACES 3+16-14
-	WRITE_STRING "demon snowman!" ;を宝てにいれた！
+	EMPTY_SPACES 3+1
+	WRITE_STRING "a tiny snowman!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE8A: ;originally $4c53
 	START_BOX_BASIC 16, 4
@@ -1166,8 +1176,8 @@ _COLLECTIBLE8A: ;originally $4c53
 	WRITE_2TILES $c8, $c9
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $d8, $d9
-	EMPTY_SPACES 3+16-15
-	WRITE_STRING "the large gear!";を宝てにいれた！
+	EMPTY_SPACES 3+3
+	WRITE_STRING "a rusty gear!";を宝てにいれた！
 	END_BOX
 _COLLECTIBLE9A: ;originally $4c8a
 	START_BOX_BASIC 16, 4
@@ -1186,8 +1196,8 @@ _COLLECTIBLE9A: ;originally $4c8a
 	WRITE_2TILES $ca, $cb
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $da, $db
-	EMPTY_SPACES 3+16-11
-	WRITE_STRING "the anchor!" ;を宝てにいれた！
+	EMPTY_SPACES 3+6
+	WRITE_STRING "an anchor!" ;を宝てにいれた！
 	END_BOX
 _COLLECTIBLE10A: ;originally $4ccb
 	START_BOX_BASIC 16, 4
@@ -1201,7 +1211,7 @@ _COLLECTIBLE10A: ;originally $4ccb
 	EMPTY_SPACES 3+11
 	WRITE_2TILES $dc, $dd
 	EMPTY_SPACES 3
-	WRITE_STRING "dragon king fang";を宝てにいれた！
+	WRITE_STRING "a dragon's fang!";を宝てにいれた！
 	END_BOX
 _ITEM_OBTAINED_HEART1: ;originally $4d01
 	START_BOX_BASIC 16, 4
@@ -1237,7 +1247,7 @@ _STAGE1_COMPLETE2: ;originally $4d3b
 	FILL_N 16, $10
 	WRITE_STRING "You can now move" ;大きい妖石を
 	EMPTY_SPACES 16
-	WRITE_STRING "larger blocks!" ;うごかせるようになった宝
+	WRITE_STRING "larger stones!" ;うごかせるようになった宝
 	EMPTY_SPACES 2
 	END_BOX
 _STAGE5_COMPLETE2: ;originally $4d5b
@@ -1262,8 +1272,8 @@ _STAGE7_COMPLETE2: ;originally $4dae
 	FILL_N 16, $10
 	WRITE_STRING "You can now" ;大きいテキを{unk5f}らせることが
 	EMPTY_SPACES 16-11
-	WRITE_STRING "attract big" ;できるようになった宝
-	EMPTY_SPACES 16-11
+	WRITE_STRING "provoke large" ;できるようになった宝
+	EMPTY_SPACES 16-13
 	WRITE_STRING "enemies."
 	EMPTY_SPACES 16-8
 	END_BOX
@@ -1281,11 +1291,10 @@ _COLLECTIBLE1B: ;originally $4df2
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 11
-	DB $48, $56, $6c, $3b, $39, $71, $72, $68, $63, $40, $58 ;りっぱだがこわれている
-	EMPTY_SPACES 26
-	COPY_LEN 11
-	DB $66, $5a, $38, $42, $51, $35, $34, $40, $57, $50, $3b ;めずらしくはないようだ
+	WRITE_STRING "It doesn't seem " ;りっぱだがこわれている
+	WRITE_STRING "to be working,  " ;めずらしくはないようだ
+	WRITE_STRING "how strange!" ;めずらしくはないようだ
+	EMPTY_SPACES 4
 	END_BOX
 _COLLECTIBLE2B: ;originally $4e16
 	START_BOX_BASIC $10,$04
@@ -1293,11 +1302,12 @@ _COLLECTIBLE2B: ;originally $4e16
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 10
-	DB $30, $48, $39, $33, $7b, $40, $70, $36, $76, $48 ;おりがたーいおまもり
-	EMPTY_SPACES 24
-	COPY_LEN 14
-	DB $44, $75, $7c, $32, $75, $44, $2e, $2c, $2f, $25, $24, $42, $57, $50 ;にんぷさんにブレゼントしよう
+	WRITE_STRING "This would" ;おりがたーいおまもり
+	EMPTY_SPACES 6
+	WRITE_STRING "make a great" ;にんぷさんにブレゼントしよう
+	EMPTY_SPACES 4
+	WRITE_STRING "gift!"
+	EMPTY_SPACES 11
 	END_BOX
 _COLLECTIBLE3B: ;originally $4e3c
 	START_BOX_BASIC $10,$04
@@ -1305,11 +1315,10 @@ _COLLECTIBLE3B: ;originally $4e3c
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 11
-	DB $41, $75, $40, $78, $44, $45, $31, $56, $63, $40, $58 ;きんいろにひかっている
-	EMPTY_SPACES 23
-	COPY_LEN 14
-	DB $34, $6a, $45, $31, $56, $63, $40, $58, $74, $31, $35, $01, $34, $7a ;なぜひかっているのかは宝なぞ
+	WRITE_STRING "The gold is" ;きんいろにひかっている
+	EMPTY_SPACES 5+16
+	WRITE_STRING "super shiny!" ;なぜひかっているのかは宝なぞ
+	EMPTY_SPACES 4
 	END_BOX
 _COLLECTIBLE4B: ;originally $4e63
 	START_BOX_BASIC $10,$04
@@ -1317,11 +1326,12 @@ _COLLECTIBLE4B: ;originally $4e63
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 9
-	DB $51, $36, $74, $54, $40, $59, $58, $46, $3b ;くまのぬいぐるみだ
-	EMPTY_SPACES 27
-	COPY_LEN 12
-	DB $41, $5c, $75, $35, $01, $70, $73, $66, $1d, $1e, $1f, $79 ;きぶんは宝おとめチツク？
+	WRITE_STRING "It's so soft," ;くまのぬいぐるみだ
+	EMPTY_SPACES 3
+	WRITE_STRING "cuddly, and" ;きぶんは宝おとめチツク？
+	EMPTY_SPACES 5
+	WRITE_STRING "cute!"
+	EMPTY_SPACES 11
 	END_BOX
 _COLLECTIBLE5B: ;originally $4e86
 	START_BOX_BASIC $10,$04
@@ -1329,11 +1339,12 @@ _COLLECTIBLE5B: ;originally $4e86
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 14
-	DB $34, $31, $44, $42, $75, $4a, $67, $39, $35, $40, $56, $63, $40, $58 ;なかにしんじゅがはいっている
-	EMPTY_SPACES 23
-	COPY_LEN 11
-	DB $43, $77, $56, $73, $66, $5a, $38, $42, $40, $31, $76 ;ちよっとめずらしいかも
+	WRITE_STRING "Oh! There's" ;なかにしんじゅがはいっている
+	EMPTY_SPACES 5
+	WRITE_STRING "a shiny pearl" ;ちよっとめずらしいかも
+	EMPTY_SPACES 3
+	WRITE_STRING "inside!"
+	EMPTY_SPACES 9
 	END_BOX
 _COLLECTIBLE6B: ;originally $4ead
 	START_BOX_BASIC $10,$04
@@ -1341,11 +1352,12 @@ _COLLECTIBLE6B: ;originally $4ead
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 10
-	DB $71, $68, $65, $30, $61, $33, $76, $74, $44, $35 ;これをおけたものには
-	EMPTY_SPACES 27
-	COPY_LEN 11
-	DB $72, $3a, $72, $40, $39, $70, $73, $5a, $68, $58, $7f ;わざわいがおとずれる。。。
+	WRITE_STRING "It won't open," ;これをおけたものには
+	EMPTY_SPACES 2
+	WRITE_STRING "maybe it was" ;わざわいがおとずれる。。。
+	EMPTY_SPACES 4
+	WRITE_STRING "sealed shut?"
+	EMPTY_SPACES 4
 	END_BOX
 _COLLECTIBLE7B: ;originally $4ed0
 	START_BOX_BASIC $10,$04
@@ -1353,11 +1365,12 @@ _COLLECTIBLE7B: ;originally $4ed0
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 12
-	DB $46, $33, $66, $35, $33, $3b, $74, $47, $41, $3b, $58, $36 ;みためはただのゆきだるま
-	EMPTY_SPACES 23
-	COPY_LEN 13
-	DB $57, $7b, $51, $46, $58, $73, $52, $71, $7b, $42, $43, $39, $50 ;よーくみるとすこーしちがう
+	WRITE_STRING "It's cold to" ;みためはただのゆきだるま
+	EMPTY_SPACES 4
+	WRITE_STRING "the touch, is" ;よーくみるとすこーしちがう
+	EMPTY_SPACES 3
+	WRITE_STRING "it real snow?"
+	EMPTY_SPACES 3
 	END_BOX
 _COLLECTIBLE8B: ;originally $4ef7
 	START_BOX_BASIC $10,$04
@@ -1365,12 +1378,12 @@ _COLLECTIBLE8B: ;originally $4ef7
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	WRITE_STRING "It looks a" ;すこしサビている
+	WRITE_STRING "This must" ;すこしサビている
+	EMPTY_SPACES 7
+	WRITE_STRING "be from an"
 	EMPTY_SPACES 6
-	WRITE_STRING "little bit"
-	EMPTY_SPACES 6
-	WRITE_STRING "rusty..." ;なにかの部品のようだ
-	EMPTY_SPACES 8
+	WRITE_STRING "old machine." ;なにかの部品のようだ
+	EMPTY_SPACES 4
 	END_BOX
 _COLLECTIBLE9B: ;originally $4f17
 	START_BOX_BASIC $10,$04
@@ -1378,11 +1391,12 @@ _COLLECTIBLE9B: ;originally $4f17
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	COPY_LEN 11
-	DB $60, $75, $49, $74, $40, $40, $3d, $3e, $2a, $1b, $3b ;えんぎのいいアイテムだ
-	EMPTY_SPACES 28
-	COPY_LEN 9
-	DB $1c, $29, $2b, $7b, $7d, $3d, $29, $2e, $79 ;ラツキー{unk7d}アツブ？
+	WRITE_STRING "Very heavy," ;えんぎのいいアイテムだ
+	EMPTY_SPACES 5
+	WRITE_STRING "especially for" ;ラツキー{unk7d}アツブ？
+	EMPTY_SPACES 2
+	WRITE_STRING "its size."
+	EMPTY_SPACES 7
 	END_BOX
 _COLLECTIBLE10B: ;originally $4f39
 	START_BOX_BASIC $10,$04
@@ -1390,11 +1404,12 @@ _COLLECTIBLE10B: ;originally $4f39
 	TILE_ATTR 48, $07
 	END_BOX
 	FILL_N 16, $10
-	WRITE_STRING "Let's show off"
+	WRITE_STRING "The dragon"
+	EMPTY_SPACES 6
+	WRITE_STRING "this came from"
 	EMPTY_SPACES 2
-	WRITE_STRING "this rare item"
-	EMPTY_SPACES 2
-	WRITE_STRING "to your friends!"
+	WRITE_STRING "must be huge!"
+	EMPTY_SPACES 3
 	END_BOX
 _ITEM_OBTAINED_HEART2: ;originally $4f5f
 	START_BOX_BASIC 16, 4
@@ -1496,7 +1511,7 @@ _DIALOGUE_90: ;originally $4f7e
 	DB $12, $14
 	EMPTY_SPACES 18
 	COPY_LEN 10
-	DB $14, $14, $01, $01, $e6, $e7, $e8, $e3, $e4, $e5 ;<14><14>  ０２N使A目
+	DB $14, $14, $01, $01, $e6, $e7, $e8, $e3, $e4, $e5 ;BEST TIME
 	EMPTY_SPACES 3
 	COPY_LEN 17
 	DB $3c, $3d, $3e, $3f, $38, $39, $01, $14, $14, $01, $01, $f6, $f7, $f8, $f3, $f4, $f5 ;<3c><3d><3e><3f><38><39> <14><14>  刀９向引先追
@@ -1508,10 +1523,12 @@ _DIALOGUE_90: ;originally $4f7e
 	DB $14, $14
 	EMPTY_SPACES 11
 	COPY_LEN 17
-	DB $40, $41, $42, $43, $44, $45, $01, $14, $14, $01, $01, $e0, $e1, $e2, $e3, $e4, $e5 ;<40><41><42><43><44><45> <14><14>  ボ手ッ使A目
+	;DB $40, $41, $42, $43, $44, $45, $01, $14, $14, $01, $01, $e0, $e1, $e2, $e3, $e4, $e5 ;YOUR TIME (top)
+	DB $40, $41, $42, $43, $44, $45, $01, $14, $14, $01, $01, $e0, $e1, $e2, $e6, $e7, $e8 ;YOUR BEST (top)
 	EMPTY_SPACES 3
 	COPY_LEN 17
-	DB $46, $47, $48, $49, $4a, $4b, $01, $14, $14, $01, $01, $f0, $f1, $f2, $f3, $f4, $f5 ;<46><47><48><49><4a><4b> <14><14>  部財屋引先追
+	;DB $46, $47, $48, $49, $4a, $4b, $01, $14, $14, $01, $01, $f0, $f1, $f2, $f3, $f4, $f5 ;YOUR TIME (bottom)
+	DB $46, $47, $48, $49, $4a, $4b, $01, $14, $14, $01, $01, $f0, $f1, $f2, $f6, $f7, $f8 ;YOUR BEST (bottom)
 	EMPTY_SPACES 3
 	COPY_LEN 1
 	DB $15

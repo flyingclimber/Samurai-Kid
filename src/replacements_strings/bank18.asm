@@ -6,7 +6,7 @@ SECTION "Bank 18 - General strings pointers", ROMX[$4000],BANK[$12]
 DW $9800, _BANK18_0
 DW $9800, _BANK18_1
 DW $9800, _BANK18_2
-DW $9800, _BANK18_3
+DW $9800, _DMG_SCREEN
 DW $9c00, _BANK18_4
 DW $9c40, _BANK18_5
 
@@ -335,7 +335,7 @@ _BANK18_2: ;originally $432f
 	DB $70, $71, $72, $73, $74, $75, $76, $77, $78, $79, $7a, $7b, $7c, $7d
 	FILL_N 84, $00
 	END_BOX
-_BANK18_3: ;originally $440e
+_DMG_SCREEN: ;originally $440e
 	START_BOX_BASIC $14,$12
 	TILE_ATTR 22, $00
 	TILE_ATTR 16, $06
@@ -377,7 +377,17 @@ _BANK18_3: ;originally $440e
 	DB $6f
 	FILL_N 18, $00
 	COPY_LEN 122
-	DB $6e, $7f, $00, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $4d, $7e, $6f, $5c, $b0, $b1, $b2, $b3, $b4, $b5, $b6, $b7, $b8, $b9, $ba, $bb, $bc, $bd, $be, $bf, $5d, $6e, $7f, $6c, $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf, $6d, $7e, $6f, $7c, $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $da, $db, $dc, $dd, $de, $df, $7d, $6e, $7f, $00, $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea, $eb, $ec, $ed, $ee, $ef, $00, $7e, $6f, $00, $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $fa, $fb, $fc, $fd, $fe, $ff, $00, $6e, $7f
+	DB $6e
+	
+	DB $7f, $00, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $00, $7e
+	DB $6f, $4c, $b0, $b1, $b2, $b3, $b4, $b5, $b6, $b7, $b8, $b9, $ba, $bb, $bc, $bd, $be, $bf, $4d, $6e
+	DB $7f, $5c, $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf, $5d, $7e
+	DB $6f, $6c, $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $da, $db, $dc, $dd, $de, $df, $6d, $6e
+	DB $7f, $7c, $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea, $eb, $ec, $ed, $ee, $ef, $7d, $7e
+	DB $6f, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $fa, $fb, $00, $00, $00, $00, $00, $6e
+	DB $7f
+	
+	
 	FILL_N 11, $00
 	COPY_LEN 2
 	DB $10, $11
@@ -387,34 +397,35 @@ _BANK18_3: ;originally $440e
 	FILL_N 18, $00
 	COPY_LEN 2
 	DB $6e, $7f
-	FILL_N 5, $00
-	COPY_LEN 8
-	DB $04, $05, $06, $07, $08, $09, $0a, $0b
-	FILL_N 5, $00
+	FILL_N 18, $00
 	COPY_LEN 2
 	DB $7e, $6f
-	FILL_N 5, $00
-	COPY_LEN 8
-	DB $14, $15, $16, $17, $18, $19, $1a, $1b
-	FILL_N 5, $00
-	COPY_LEN 57
-	DB $6e, $7f, $0c, $0d, $0e, $0f, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $2a, $2b, $2c, $00, $7e, $6f, $1c, $1d, $1e, $1f, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $3a, $3b, $3c, $13, $6e, $7f, $00, $00, $2d, $2e, $2f, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49
-	FILL_N 3, $00
-	COPY_LEN 17
-	DB $7e, $6f, $00, $00, $3d, $3e, $3f, $50, $51, $52, $53, $54, $55, $56, $57, $58, $59
-	FILL_N 3, $00
-	COPY_LEN 2
-	DB $6e, $7f
-	FILL_N 5, $00
-	COPY_LEN 9
-	DB $60, $61, $62, $63, $64, $65, $66, $67, $68
-	FILL_N 4, $00
+	FILL_N 18, $00
+	
+	
+; THIS GAMEPAK CAN 
+; ONLY BE PLAYED ON
+; A GAME BOY COLOR 
+;     SYSTEM.     
+	  
+	  
+	  
+; A=50 B=51 C=52 D=53 E=54 F=55 G=56 H=57 I=58 J=59 K=5a L=5b
+; M=60 N=61 O=62 P=63 Q=64 R=65 S=66 T=67 U=68 V=69 W=6a X=6b
+; Y=70 Z=71 .=72
+
+	COPY_LEN 82
+	DB $6e
+	DB $7f, $00, $67, $57, $58, $66, $00, $56, $50, $60, $54, $63, $50, $5a, $00, $52, $50, $61, $00, $7e
+	DB $6f, $00, $62, $61, $5b, $70, $00, $51, $54, $00, $63, $5b, $50, $70, $54, $53, $00, $62, $61, $6e
+	DB $7f, $00, $50, $00, $56, $50, $60, $54, $00, $51, $62, $70, $00, $52, $62, $5b, $62, $65, $00, $7e
+	DB $6f, $00, $00, $00, $00, $00, $66, $70, $66, $67, $54, $60, $72, $00, $00, $00, $00, $00, $00, $6e
+	DB $7f
+
+	FILL_N 18, $00
 	COPY_LEN 2
 	DB $7e, $6f
-	FILL_N 5, $00
-	COPY_LEN 10
-	DB $70, $71, $72, $73, $74, $75, $76, $77, $78, $12
-	FILL_N 3, $00
+	FILL_N 18, $00
 	COPY_LEN 2
 	DB $6e, $7f
 	FILL_N 18, $00
@@ -3177,33 +3188,48 @@ _INTRO_TEXT1: ;originally $6f67
 	END_BOX
 _INTRO_TEXT2: ;originally $6f8f
 	START_INTRO_BOX
+	; WRITE_LINE "One day, the Demon" ;あるとき 、世界征服をねらう「妖怪王」
+	; WRITE_LINE "King savagely" ;が  、 とつぜん平和なヒンモトに攻め
+	; WRITE_LINE "attacked it." ;こんできました 。
 	WRITE_LINE "One day, the Demon" ;あるとき 、世界征服をねらう「妖怪王」
-	WRITE_LINE "King savagely" ;が  、 とつぜん平和なヒンモトに攻め
-	WRITE_LINE "attacked it." ;こんできました 。
+	WRITE_LINE "King arrived and" ;が  、 とつぜん平和なヒンモトに攻め
+	WRITE_LINE "attacked it with" ;こんできました 。
 	END_BOX
 _INTRO_TEXT3: ;originally $6fc4
 	START_INTRO_BOX
-	WRITE_LINE "The Demon King de-" ; 「 妖怪王」は 、千をこえる部下と 、
-	WRITE_LINE "ployed more than" ;十の 「妖怪城を 使って 、
-	WRITE_LINE "1000 soldiers,"
+	; WRITE_LINE "The Demon King de-" ; 「 妖怪王」は 、千をこえる部下と 、
+	; WRITE_LINE "ployed more than" ;十の 「妖怪城を 使って 、
+	; WRITE_LINE "1000 soldiers,"
+	WRITE_LINE "1000 soldiers." ; 「 妖怪王」は 、千をこえる部下と 、
+	WRITE_LINE "He then built 10" ;十の 「妖怪城を 使って 、
+	WRITE_LINE "castles to reign"
 	END_BOX
 _INTRO_TEXT4: ;originally $6fea
 	START_INTRO_BOX
-	WRITE_LINE "10 castles and" ;あっというまにヒンモトの国の
-	WRITE_LINE "took most of" ;オきほとんどをのっとってしまいました 。
-	WRITE_LINE "the kingdom."
+	; WRITE_LINE "10 castles and" ;あっというまにヒンモトの国の
+	; WRITE_LINE "took most of" ;オきほとんどをのっとってしまいました 。
+	; WRITE_LINE "the kingdom."
+	WRITE_LINE "over the land." ;あっというまにヒンモトの国の
+	WRITE_LINE "The Prince of" ;オきほとんどをのっとってしまいました 。
+	WRITE_LINE "Hinomoto rose up"
 	END_BOX
 _INTRO_TEXT5: ;originally $7015
 	START_INTRO_BOX
-	WRITE_LINE "The prince Homura " ;ヒンモトの国の王子「ホムラ丸」は 、
-	WRITE_LINE "Maru embarks on a " ;お併のヒデとヤスをつれて 、
-	WRITE_LINE "journey to bring"
+	; WRITE_LINE "The prince Homura " ;ヒンモトの国の王子「ホムラ丸」は 、
+	; WRITE_LINE "Maru embarks on a " ;お併のヒデとヤスをつれて 、
+	; WRITE_LINE "journey to bring"
+	WRITE_LINE "to challenge the" ;ヒンモトの国の王子「ホムラ丸」は 、
+	WRITE_LINE "Demon King." ;お併のヒデとヤスをつれて 、
+	WRITE_LINE "\"I, Homura Maru,"
 	END_BOX
 _INTRO_TEXT6: ;originally $7041
 	START_INTRO_BOX
-	WRITE_LINE "back peace and" ;平和をとりもどすため 、
-	WRITE_LINE "exterminate the" ;妖怪たいじにのりだします 。
-	WRITE_LINE "Demon." ;along with his aides Hide and Yasu.
+	; WRITE_LINE "back peace and" ;平和をとりもどすため 、
+	; WRITE_LINE "exterminate the" ;妖怪たいじにのりだします 。
+	; WRITE_LINE "Demon." ;along with his aides Hide and Yasu.
+	WRITE_LINE "will conquer the" ;平和をとりもどすため 、
+	WRITE_LINE "castles and" ;妖怪たいじにのりだします 。
+	WRITE_LINE "restore peace!\"" ;along with his aides Hide and Yasu.
 	END_BOX
 
 
@@ -3367,18 +3393,18 @@ _BANK18_106: ;originally $740d
 
 
 
-
+SETCHARMAP ending
 _ENDING_1: ;originally $7446
 	START_BOX_BASIC $14,$04
 	TILE_ATTR 18, $0f
 	COPY_LEN 3
 	DB $2f, $2f, $0f
+	TILE_ATTR 3, $07
+	TILE_ATTR 11, $0f
 	TILE_ATTR 4, $07
-	TILE_ATTR 9, $0f
-	TILE_ATTR 5, $07
 	COPY_LEN 2
 	DB $2f, $0f
-	TILE_ATTR 18, $07
+	TILE_ATTR 18, $0f
 	TILE_ATTR 1, $2f
 	TILE_ATTR 18, $4f
 	COPY_LEN 2
@@ -3389,13 +3415,12 @@ _ENDING_1: ;originally $7446
 	FILL_N 18, $fa
 	COPY_LEN 2
 	DB $f8, $fc
+	EMPTY_SPACES 3
+	WRITE_STRING "You did it!"
 	EMPTY_SPACES 4
-	COPY_LEN 9
-	DB $13, $1a, $1b, $0c, $19, $0f, $10, $10, $11
-	EMPTY_SPACES 5
 	COPY_LEN 2
 	DB $fc, $fc
-	EMPTY_SPACES 18
+	WRITE_STRING "It's over at last!"
 	COPY_LEN 2
 	DB $fc, $f8
 	FILL_N 18, $fa
@@ -3407,12 +3432,14 @@ _ENDING_2: ;originally $7483
 	TILE_ATTR 18, $0f
 	COPY_LEN 3
 	DB $2f, $2f, $0f
-	TILE_ATTR 3, $07
-	TILE_ATTR 11, $0f
+	TILE_ATTR 4, $07
+	TILE_ATTR 10, $0f
 	TILE_ATTR 4, $07
 	COPY_LEN 2
 	DB $2f, $0f
-	TILE_ATTR 18, $07
+	TILE_ATTR 2, $07
+	TILE_ATTR 14, $0f
+	TILE_ATTR 2, $07
 	TILE_ATTR 1, $2f
 	TILE_ATTR 18, $4f
 	COPY_LEN 2
@@ -3423,13 +3450,14 @@ _ENDING_2: ;originally $7483
 	FILL_N 18, $fa
 	COPY_LEN 2
 	DB $f8, $fc
-	EMPTY_SPACES 3
-	COPY_LEN 11
-	DB $16, $02, $17, $18, $0c, $0d, $0e, $0f, $10, $10, $11
+	EMPTY_SPACES 4
+	WRITE_STRING "Well done,"
 	EMPTY_SPACES 4
 	COPY_LEN 2
 	DB $fc, $fc
-	EMPTY_SPACES 18
+	EMPTY_SPACES 2
+	WRITE_STRING "Prince Homura!"
+	EMPTY_SPACES 2
 	COPY_LEN 2
 	DB $fc, $f8
 	FILL_N 18, $fa
@@ -3441,12 +3469,11 @@ _ENDING_3: ;originally $74c2
 	TILE_ATTR 18, $0f
 	COPY_LEN 2
 	DB $2f, $2f
-	TILE_ATTR 5, $0f
-	TILE_ATTR 1, $07
-	TILE_ATTR 12, $0f
-	COPY_LEN 3
-	DB $07, $2f, $0f
-	TILE_ATTR 18, $07
+	TILE_ATTR 1+18, $0f
+	COPY_LEN 2
+	DB $2f, $0f
+	TILE_ATTR 16, $0f
+	TILE_ATTR 2, $07
 	TILE_ATTR 1, $2f
 	TILE_ATTR 18, $4f
 	COPY_LEN 2
@@ -3455,9 +3482,10 @@ _ENDING_3: ;originally $74c2
 	COPY_LEN 1
 	DB $f8
 	FILL_N 18, $fa
-	COPY_LEN 22
-	DB $f8, $fc, $08, $1a, $06, $09, $01, $02, $03, $04, $05, $07, $1d, $1e, $0b, $0c, $19, $0f, $11, $01, $fc, $fc
-	EMPTY_SPACES 18
+	COPY_LEN 22 + 16
+	DB $f8, $fc, "Everyone will know", $fc, $fc
+	DB "   of our feats!"
+	EMPTY_SPACES 2
 	COPY_LEN 2
 	DB $fc, $f8
 	FILL_N 18, $fa
@@ -3469,12 +3497,12 @@ _ENDING_4: ;originally $7502
 	TILE_ATTR 18, $0f
 	COPY_LEN 3
 	DB $2f, $2f, $0f
-	TILE_ATTR 4, $07
-	TILE_ATTR 11, $0f
-	TILE_ATTR 3, $07
+	TILE_ATTR 18, $0f
 	COPY_LEN 2
 	DB $2f, $0f
-	TILE_ATTR 18, $07
+	TILE_ATTR 2, $07
+	TILE_ATTR 14, $0f
+	TILE_ATTR 2, $07
 	TILE_ATTR 1, $2f
 	TILE_ATTR 18, $4f
 	COPY_LEN 2
@@ -3485,13 +3513,12 @@ _ENDING_4: ;originally $7502
 	FILL_N 18, $fa
 	COPY_LEN 2
 	DB $f8, $fc
-	EMPTY_SPACES 4
-	COPY_LEN 11
-	DB $00, $05, $14, $15, $0b, $0c, $0d, $0e, $0f, $10, $11
-	EMPTY_SPACES 3
+	WRITE_STRING "Let's go back home"
 	COPY_LEN 2
 	DB $fc, $fc
-	EMPTY_SPACES 18
+	EMPTY_SPACES 2
+	WRITE_STRING "and celebrate!"
+	EMPTY_SPACES 2
 	COPY_LEN 2
 	DB $fc, $f8
 	FILL_N 18, $fa
@@ -3856,9 +3883,12 @@ _CREDITS_17: ;originally $7978
 	TILE_ATTR 1, $07 + %00101000
 	TILE_ATTR 20*2 - 3 - 14, $07 + %00001000
 	END_BOX
-	WRITE_STRING " *SPECIAL THANKS*" ;スペシャルサンクス
-	EMPTY_SPACES 20 - 3 - 14 + 20 - 12 - 1
-	WRITE_STRING "INOUE NARITO " ;いのうえ　なりと
+	;WRITE_STRING " *SPECIAL THANKS*" ;スペシャルサンクス
+	WRITE_STRING " *EN.TRANSLATION*"
+	;EMPTY_SPACES 20 - 3 - 14 + 20 - 12 - 1
+	EMPTY_SPACES 20 - 3 - 14 + 20 - 12 - 1 - 1
+	;WRITE_STRING "INOUE NARITO " ;いのうえ　なりと
+	WRITE_STRING "FLYINGCLIMBER "
 	END_BOX
 _CREDITS_18: ;originally $79a5
 	START_BOX_BASIC 20, 2
@@ -3866,9 +3896,12 @@ _CREDITS_18: ;originally $79a5
 	TILE_ATTR 1, $07 + %00101000
 	TILE_ATTR 20*2 - 3 - 14, $07 + %00001000
 	END_BOX
-	WRITE_STRING " *SPECIAL THANKS*" ;スペシャルサンクス
-	EMPTY_SPACES 20 - 3 - 14 + 20 - 12 - 1
-	WRITE_STRING "IWATA SACHIE " ;いわた　さちえ
+	;WRITE_STRING " *SPECIAL THANKS*" ;スペシャルサンクス
+	WRITE_STRING " *EN.TRANSLATION*"
+	;EMPTY_SPACES 20 - 3 - 14 + 20 - 12 - 1
+	EMPTY_SPACES 20 - 3 - 14 + 20 - 12 - 1 - 1
+	;WRITE_STRING "IWATA SACHIE " ;いわた　さちえ
+	WRITE_STRING "PROSTATEPUNCH "
 	END_BOX
 _CREDITS_19_UNUSED: ;originally $79d1
 	START_BOX_BASIC $14,$02
@@ -3893,9 +3926,12 @@ _CREDITS_20: ;originally $79fe
 	TILE_ATTR 1, $07 + %00101000
 	TILE_ATTR 20*2 - 3 - 14, $07 + %00001000
 	END_BOX
-	WRITE_STRING " *SPECIAL THANKS*" ;スペシャルサンクス
-	EMPTY_SPACES 20 - 3 - 14 + 20 - 14 - 1
-	WRITE_STRING "ISHIKAWA NAMIE " ;いしかわ　なみえ
+	;WRITE_STRING " *SPECIAL THANKS*" ;スペシャルサンクス
+	WRITE_STRING " *EN.TRANSLATION*"
+	;EMPTY_SPACES 20 - 3 - 14 + 20 - 14 - 1
+	EMPTY_SPACES 20 - 3 - 14 + 20 - 14 - 1 + 6
+	;WRITE_STRING "ISHIKAWA NAMIE " ;いしかわ　なみえ
+	WRITE_STRING "MARC MAX "
 	END_BOX
 _CREDITS_21: ;originally $7a2b
 	START_BOX_BASIC 20, 2
